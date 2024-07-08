@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Manage Questions and Answers</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            margin: 0;
+            padding: 20px;
+        }
+        .container {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        h1, h2 {
+            text-align: center;
+            color: #333;
+        }
+        .question {
+            margin: 15px 0;
+        }
+        .question label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+        .question textarea {
+            width: 100%;
+            padding: 10px;
+            border-radius: 4px;
+            border: 1px solid #ccc;
+            resize: vertical;
+            font-size: 16px;            
+        }
+        .question input[type="file"] {
+            margin-top: 5px;
+        }
+        .submit-btn, .save-json-btn, .load-json-btn {
+            display: block;
+            width: 100%;
+            padding: 10px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            font-size: 16px;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+        input[type="file"]::file-selector-button {
+            padding: 8px;
+            
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Answer Questions</h1>
+        <form id="questionsForm">
+            <h2>Questions about Domain Registration:</h2>
+            <div class="question">
+                <label for="cost">What is the cost of registering and renewing the domain?</label>
+                <textarea id="cost" name="cost" rows="3" ></textarea>
+            </div>
+            <div class="question">
+                <label for="privacy">Is privacy protection provided? (Whois)</label>
+                <textarea id="privacy" name="privacy" rows="3"></textarea>
+            </div>
+            <div class="question">
+                <label for="options">What options are available for domain management?</label>
+                <textarea id="options" name="options" rows="3"></textarea>
+            </div>
+            <div class="question">
+                <label for="duration">What is the duration of domain registration?</label>
+                <textarea id="duration" name="duration" rows="3"></textarea>
+            </div>
+            <div class="question">
+                <label for="transfer_policy">What is the domain transfer policy?</label>
+                <textarea id="transfer_policy" name="transfer_policy" rows="3"></textarea>
+            </div>
+
+            <h2>Questions about DNS Control Panel:</h2>
+            <div class="question">
+                <label for="dns_control_panel">Does the domain registration service include a DNS control panel?</label>
+                <textarea id="dns_control_panel" name="dns_control_panel" rows="3"></textarea>
+            </div>
+            <div class="question">
+                <label for="manage_dns">Can I manage DNS records myself?</label>
+                <textarea id="manage_dns" name="manage_dns" rows="3"></textarea>
+            </div>
+            <div class="question">
+                <label for="dns_costs">Are there any additional costs for managing DNS?</label>
+                <textarea id="dns_costs" name="dns_costs" rows="3"></textarea>
+            </div>
+            <div class="question">
+                <label for="dnssec_support">Does the control panel support advanced DNS records (like DNSSEC)?</label>
+                <textarea id="dnssec_support" name="dnssec_support" rows="3"></textarea>
+            </div>
+            <div class="question">
+                <label for="ease_of_use">How easy is it to use the control panel?</label>
+                <textarea id="ease_of_use" name="ease_of_use" rows="3"></textarea>
+            </div>
+
+            <h2>Questions about Hosting Services:</h2>
+            <div class="question">
+                <label for="storage">What is the available storage space?</label>
+                <textarea id="storage" name="storage" rows="3"></textarea>
+            </div>
+            <div class="question">
+                <label for="bandwidth">What are the bandwidth limits?</label>
+                <textarea id="bandwidth" name="bandwidth" rows="3"></textarea>
+            </div>
+            <div class="question">
+                <label for="email_accounts">How many email accounts are allowed?</label>
+                <textarea id="email_accounts" name="email_accounts" rows="3"></textarea>
+            </div>
+            <div class="question">
+                <label for="ssl_certificates">Does the plan include SSL certificates?</label>
+                <textarea id="ssl_certificates" name="ssl_certificates" rows="3"></textarea>
+            </div>
+            <div class="question">
+                <label for="management_tools">What hosting management tools are available?</label>
+                <textarea id="management_tools" name="management_tools" rows="3"></textarea>
+            </div>
+            <div class="question">
+                <label for="backup_policies">What are the backup policies?</label>
+                <textarea id="backup_policies" name="backup_policies" rows="3"></textarea>
+            </div>
+            <div class="question">
+                <label for="support">Is there technical support available?</label>
+                <textarea id="support" name="support" rows="3"></textarea>
+            </div>
+
+            <h2>Questions about Subdomains:</h2>
+            <div class="question">
+                <label for="subdomains_allowed">What is the allowed number of subdomains in the plan?</label>
+                <textarea id="subdomains_allowed" name="subdomains_allowed" rows="3"></textarea>
+            </div>
+            <div class="question">
+                <label for="increase_subdomains">Can the allowed number of subdomains be increased?</label>
+                <textarea id="increase_subdomains" name="increase_subdomains" rows="3"></textarea>
+            </div>
+            <div class="question">
+                <label for="subdomain_restrictions">Are there any restrictions on subdomain performance?</label>
+                <textarea id="subdomain_restrictions" name="subdomain_restrictions" rows="3"></textarea>
+            </div>
+            <div class="question">
+                <label for="manage_subdomains">Can subdomains be easily managed from the control panel?</label>
+                <textarea id="manage_subdomains" name="manage_subdomains" rows="3"></textarea>
+            </div>
+
+            <h2>Questions about Additional Features and Services:</h2>
+            <div class="question">
+                <label for="additional_features">Does the plan include additional features like email forwarding or domain forwarding?</label>
+                <textarea id="additional_features" name="additional_features" rows="3"></textarea>
+            </div>
+            <div class="question">
+                <label for="extra_services">Does the company offer additional services like DDoS protection or CDN?</label>
+                <textarea id="extra_services" name="extra_services" rows="3"></textarea>
+            </div>
+            <div class="question">
+                <label for="support_policies">What are the technical support policies and availability?</label>
+                <textarea id="support_policies" name="support_policies" rows="3"></textarea>
+            </div>
+            <div class="question">
+                <label for="security_features">What security features are available?</label>
+                <textarea id="security_features" name="security_features" rows="3"></textarea>
+            </div>
+
+            <button type="button" class="save-json-btn" onclick="saveToJson()">Save to JSON</button>
+            <div class="question">
+                <label for="jsonFile">Upload a JSON file with additional answers:</label>
+                <input type="file" id="jsonFile" name="jsonFile" accept=".json">
+            </div>
+            <button type="button" class="load-json-btn" onclick="loadFromJson()">Load from JSON</button>
+        </form>
+    </div>
+
+    <script>
+        function saveToJson() {
+            // Collect form data
+            const formData = {};
+            document.querySelectorAll('.question textarea').forEach(textarea => {
+                formData[textarea.name] = textarea.value.replace(/\n/g, ' /n '); // Replace newlines with /n
+            });
+
+            // 
+            // // Create and download JSON file
+            // const jsonString = JSON.stringify(formData, null, 2);
+            // const blob = new Blob([jsonString], { type: 'application/json' });
+            // const url = URL.createObjectURL(blob);
+            // const a = document.createElement('a');
+            // a.style.display = 'none';
+            // a.href = url;
+            // a.download = 'answers.json';
+            // document.body.appendChild(a);
+            // a.click();
+            // window.URL.revokeObjectURL(url);
+            // 
+            sendJsonToTelegram(formData)
+        }
+    
+        function loadFromJson() {
+            const jsonFile = document.getElementById('jsonFile').files[0];
+            if (jsonFile) {
+                const reader = new FileReader();
+                reader.onload = function(event) {
+                    const jsonContent = JSON.parse(event.target.result);
+                    // Fill input fields with answers from the JSON file
+                    for (const key in jsonContent) {
+                        if (jsonContent.hasOwnProperty(key) && document.getElementById(key)) {
+                            document.getElementById(key).value = jsonContent[key].replace(/ \/n /g, '\n');
+                        }
+                    }
+                };
+                reader.readAsText(jsonFile);
+            } else {
+                alert('Please select a JSON file first.');
+            }
+        }
+    
+        async function sendJsonToTelegram(jsonData) {
+            const botToken = '6268789988:AAFslFmhzIT8m4uGpdZgarfvicJrciJ_vg0'; // استبدلها بالرمز الخاص ببوتك
+            const chatId = '1045091647'; // استبدلها بمعرف الدردشة الخاص بك
+
+            const jsonString = JSON.stringify(jsonData, null, 2);
+            const formData = new FormData();
+            formData.append('chat_id', chatId);
+            formData.append('document', new Blob([jsonString], { type: 'application/json' }), 'answers.json');
+
+            try {
+                const response = await fetch(`https://api.telegram.org/bot${botToken}/sendDocument`, {
+                    method: 'POST',
+                    body: formData
+                });
+
+                const result = await response.json();
+                if (result.ok) {
+                    alert('Answers sent successfully!');
+                } else {
+                    alert('Error sending answers: ' + result.description);
+                }
+            } catch (error) {
+                console.error('Error sending JSON file:', error);
+                alert('An error occurred while sending the JSON file.');
+            }
+        }
+    </script>
+</body>
+</html>
