@@ -1,0 +1,6 @@
+Grocery,Dettol 500ml,Star,1.5,17,15/6/2025,0.45
+Electronic,VF-700,Panasonic,5,1750,in Home Appliances,180
+Grocery,Milk 500ml,Candia,1.25,5.5,10/12/2024,0.35
+Electronic,TV NV-500,Sony,0,950,in Home Appliances,200
+Electronic,Drill X15,Bush,15,1650,out Home Appliances,2200
+Electronic,Air Condition E100,Media,3,2800,in Home Appliances,1800

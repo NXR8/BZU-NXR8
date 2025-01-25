@@ -1,0 +1,1 @@
+HourlyEmployee,1000,dfgh,werty,15/1/2009,rty,ertyhu,dfghj,056123123,qwert@swdfg.gg,rty,defgh,Bachelor,file:/mnt/Storage/BZU/BZU/Third-Semester/COMP2311/Project2311_Phase2_20245/phase2/target/classes/icon/defaultUser.png,0,0.0
